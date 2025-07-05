@@ -64,3 +64,11 @@ coverage.xml
 # dotenv
 .env
 .env.*
+
+# Bazaar bot data files
+bazaar_listings.json
+episode_channels.json
+listing_messages.json
+items_combined.json
+
+venv/
