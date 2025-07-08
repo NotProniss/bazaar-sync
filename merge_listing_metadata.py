@@ -8,7 +8,6 @@ with open('bazaar_listings.json', 'r', encoding='utf-8') as f:
 with open('items_combined.json', 'r', encoding='utf-8') as f:
     items = json.load(f)
 
-
 # Build lookups for item name to episode and bank
 item_to_episode = {item['Items']: item.get('Episode', None) for item in items}
 item_to_bank = {item['Items']: item.get('Bank', None) for item in items}

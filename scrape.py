@@ -6,15 +6,15 @@ import os
 
 ####### URL's to download the .csv files from and saving the files as parts########
 
-url_1 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D0/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
+url_1 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/limit%3D500/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D0/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FBank/-3FValue/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
 filename1 = 'itemsPart1.csv'
-url_2 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D500/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
+url_2 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D500/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FBank/-3FValue/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
 filename2 = 'itemsPart2.csv'
-url_3 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D1000/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
+url_3 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D1000/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FBank/-3FValue/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
 filename3 = 'itemsPart3.csv'
-url_4 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D1500/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
+url_4 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D1500/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FBank/-3FValue/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
 filename4 = 'itemsPart4.csv'
-url_5 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D2000/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
+url_5 = ('https://brightershoreswiki.org/w/Special:Ask/format%3Dcsv/link%3Dall/headers%3Dshow/searchlabel%3DCSV/class%3Dsortable-20wikitable-20smwtable/prefix%3Dnone/sort%3DProfession-20Level-20A/order%3Dasc/offset%3D2000/limit%3D500/-5B-5BInfobox::Item-5D-5D/-3F/-3FImage-23-2D/-3FEpisode/-3FVariant-20of/-3FBank/-3FValue/-3FProfession-20A/-3FProfession-20Level-20A/-3FProfession-20B/-3FProfession-20Level-20B/-3FTradeable/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue')
 filename5 = 'itemsPart5.csv'
 
 ### Download the CSV files and save them ###
@@ -57,7 +57,7 @@ combined_df.to_csv('items_combined.csv', index=False, encoding='utf-8')
 
 ### Open and clean the merged .csv ###
 filename6 = 'items_combined.csv'
-df = pd.read_csv(filename6, usecols=['Unnamed: 0', 'Image', 'Episode', 'Variant of', 'Profession A', 'Profession Level A', 'Profession B', 'Profession Level B', 'Tradeable'], encoding='utf-8')
+df = pd.read_csv(filename6, usecols=['Unnamed: 0', 'Image', 'Episode', 'Variant of', 'Bank', 'Value', 'Profession A', 'Profession Level A', 'Profession B', 'Profession Level B', 'Tradeable'], encoding='utf-8')
 df.rename(columns={'Unnamed: 0': 'Items'}, inplace=True) #replace empty column name with 'Items'
 df['Image'] = df['Image'].str.replace('File:', 'https://brightershoreswiki.org/images/')# preplace file prefix with wiki link to the image
 df['Image'] = df['Image'].str.replace(' ', '_') # remove spaces from url
