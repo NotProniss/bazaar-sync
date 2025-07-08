@@ -153,6 +153,50 @@ def register_commands(bot_instance):
             await ctx.send('**Current channel assignments:**\n' + '\n'.join(lines))
             return
 
+        # If arguments are provided, handle setting the channel
+        if not ctx.author.guild_permissions.administrator:
+            await ctx.send('You must be a server administrator to use this command.')
+            return
+        # Accept both #channel mention and channel ID
+        if channel is None:
+            await ctx.send('Please specify a channel (mention or ID).')
+            return
+        if channel.startswith('<#') and channel.endswith('>'):
+            channel_id = channel[2:-1]
+        else:
+            channel_id = channel
+        try:
+            channel_obj = ctx.guild.get_channel(int(channel_id))
+        except Exception:
+            channel_obj = None
+        if not channel_obj or not hasattr(channel_obj, 'mention'):
+            await ctx.send('Invalid channel. Please mention a text channel or provide a valid channel ID.')
+            return
+        episode_channels = load_episode_channels()
+        bank_channels = load_bank_channels()
+        guild_id = str(ctx.guild.id)
+        if target in EPISODES:
+            if guild_id not in episode_channels:
+                episode_channels[guild_id] = {}
+            episode_channels[guild_id][target] = str(channel_obj.id)
+            save_episode_channels(episode_channels)
+            await ctx.send(f'Channel for episode **{target}** set to {channel_obj.mention} for this server.')
+            return
+        elif target.lower().startswith('bank:'):
+            bank_name = target[5:].strip()
+            if not bank_name:
+                await ctx.send('Please specify a bank name after bank:.')
+                return
+            if guild_id not in bank_channels:
+                bank_channels[guild_id] = {}
+            bank_channels[guild_id][bank_name] = str(channel_obj.id)
+            save_bank_channels(bank_channels)
+            await ctx.send(f'Channel for bank **{bank_name}** set to {channel_obj.mention} for this server.')
+            return
+        else:
+            await ctx.send(f'Invalid target. Use an episode name or bank:BankName.')
+            return
+
     @bz.command(name='purge', help='Delete all messages posted by the bot in this server (admin only)')
     @commands.has_permissions(administrator=True)
     async def bz_purge(ctx):
@@ -194,45 +238,4 @@ def register_commands(bot_instance):
             await ctx.send('No channel assignments found for this server.')
 
     # --- Channel assignment logic for bz_channels ---
-    @bz_channels.after_invoke
-    async def after_bz_channels(ctx):
-        target = ctx.kwargs.get('target')
-        channel = ctx.kwargs.get('channel')
-        if target is None or channel is None:
-            return
-        if not ctx.author.guild_permissions.administrator:
-            await ctx.send('You must be a server administrator to use this command.')
-            return
-        # Accept both #channel mention and channel ID
-        if channel.startswith('<#') and channel.endswith('>'):
-            channel_id = channel[2:-1]
-        else:
-            channel_id = channel
-        channel_obj = ctx.guild.get_channel(int(channel_id))
-        if not channel_obj or not hasattr(channel_obj, 'mention'):
-            await ctx.send('Invalid channel. Please mention a text channel or provide a valid channel ID.')
-            return
-        episode_channels = load_episode_channels()
-        bank_channels = load_bank_channels()
-        guild_id = str(ctx.guild.id)
-        if target in EPISODES:
-            if guild_id not in episode_channels:
-                episode_channels[guild_id] = {}
-            episode_channels[guild_id][target] = str(channel_obj.id)
-            save_episode_channels(episode_channels)
-            await ctx.send(f'Channel for episode **{target}** set to {channel_obj.mention} for this server.')
-            return
-        elif target.lower().startswith('bank:'):
-            bank_name = target[5:].strip()
-            if not bank_name:
-                await ctx.send('Please specify a bank name after bank:.')
-                return
-            if guild_id not in bank_channels:
-                bank_channels[guild_id] = {}
-            bank_channels[guild_id][bank_name] = str(channel_obj.id)
-            save_bank_channels(bank_channels)
-            await ctx.send(f'Channel for bank **{bank_name}** set to {channel_obj.mention} for this server.')
-            return
-        else:
-            await ctx.send(f'Invalid target. Use an episode name or bank:BankName.')
-            return
+    # (Moved into bz_channels command above)
